@@ -1,3 +1,5 @@
+const electionsForm = document.getElementById('electionsForm');
+
 electionsForm.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent default form submission
 
@@ -7,7 +9,7 @@ electionsForm.addEventListener('submit', function(event) {
         const candidate = selectedVote.value;
 
         // Send vote to Google Sheets
-        fetch('https://script.google.com/macros/s/AKfycbzP86JpURGFvWZ3cZKyGBlxTV9gPXYduJx_z6tRpsKI8_9DEtV6m7mtnja_vo6IT_F0PA/exec', { // Replace with your Google Sheets Web App URL
+        fetch('https://script.google.com/macros/s/AKfycbwhZRkMQugQ6TUT6tJ8BWD5VE2Bw7xmVy-cQcDWAWq2LhzaZFc_L0C6340nid-M_ZlH/exec', { // Replace with your Google Sheets Web App URL
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -17,11 +19,7 @@ electionsForm.addEventListener('submit', function(event) {
         .then(response => {
             if (response.ok) {
                 console.log("Vote recorded!");
-                // Reset form and update vote count here
-                electionsForm.reset();
-                studentIdContainer.style.display = 'none'; // Hide student ID input after submission
-                voteCount++;
-                voteCountDisplay.textContent = `Number of votes: ${voteCount}`;
+                electionsForm.reset(); // Reset form after submission
             } else {
                 console.error("Error recording vote");
             }
