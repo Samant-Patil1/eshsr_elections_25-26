@@ -1,42 +1,33 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const voteTypeRadios = document.querySelectorAll('input[name="voteType"]');
-    const studentIdContainer = document.getElementById('studentIdContainer');
-    const electionsForm = document.getElementById('electionsForm');
-    const voteCountDisplay = document.getElementById('voteCount');
-    let voteCount = 0; // Initialize vote count
+electionsForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
 
-    // Show/hide student ID input based on voting option
-    // Show/hide student ID input based on voting option
-    voteTypeRadios.forEach(radio => {
-        radio.addEventListener('change', function() {
-            if (this.value === 'withName') {
-                studentIdContainer.style.display = 'block'; // Show the student ID input
+    const selectedVote = electionsForm.querySelector('input[type="radio"]:checked');
+
+    if (selectedVote) {
+        const candidate = selectedVote.value;
+
+        // Send vote to Google Sheets
+        fetch('https://script.google.com/macros/s/AKfycbzP86JpURGFvWZ3cZKyGBlxTV9gPXYduJx_z6tRpsKI8_9DEtV6m7mtnja_vo6IT_F0PA/exec', { // Replace with your Google Sheets Web App URL
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ candidate: candidate })
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log("Vote recorded!");
+                // Reset form and update vote count here
+                electionsForm.reset();
+                studentIdContainer.style.display = 'none'; // Hide student ID input after submission
+                voteCount++;
+                voteCountDisplay.textContent = `Number of votes: ${voteCount}`;
             } else {
-                studentIdContainer.style.display = 'none'; // Hide the student ID input
+                console.error("Error recording vote");
             }
+        })
+        .catch(error => {
+            console.error("Error:", error);
         });
-    });
-
-    // Handle form submission
-    electionsForm.addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent default form submission
-
-        // Check if a valid student ID is provided when voting with a name
-        const studentId = document.getElementById('studentId').value;
-        if (studentId.startsWith('ESHSR@') && studentId.endsWith('123')) {
-            // Redirect to admin page (replace 'admin.html' with your actual admin page)
-            window.location.href = 'admin.html';
-        } else {
-            // Increment vote count and update display
-            voteCount++;
-            voteCountDisplay.textContent = `Number of votes: ${voteCount}`;
-
-            // Reset the form
-            electionsForm.reset();
-            studentIdContainer.style.display = 'none'; // Hide student ID input after submission
-
-            // Here you can add code to send the vote data to your database
-            // For example, using fetch or XMLHttpRequest to send data to your server
-        }
-    });
+    }
 });
