@@ -1,0 +1,78 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('background.jpeg'); /* Updated background image */
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background image */
+    color: #f4f4f4; /* Light text color */
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #000; /* Solid black header */
+    color: #f4f4f4;
+    text-align: center;
+    padding: 20px 0;
+}
+
+header img {
+    max-width: 100px; /* Logo size */
+    margin-bottom: 10px; /* Space below the logo */
+}
+
+main {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8); /* Slightly transparent black background for the main container */
+    border-radius: 8px; /* Rounded corners for the main container */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    color: #f4f4f4; /* Light color for headings */
+}
+
+.division {
+    margin-bottom: 20px;
+    border: 1px solid #444; /* Dark border */
+    border-radius: 8px; /* Rounded corners for divisions */
+    padding: 10px;
+    background-color: rgba(58, 58, 58, 0.8); /* Dark background for divisions */
+}
+
+label {
+    display: inline-flex; /* Change to inline-flex for side-by-side display */
+    align-items: center;
+    margin: 10px; /* Add margin for spacing */
+}
+
+input[type="radio"] {
+    margin-right: 10px; /* Space between radio button and label */
+}
+
+button {
+    background-color: #4a90e2; /* Button color */
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px; /* Rounded corners for buttons */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #357ab8; /* Darker button on hover */
+}
+
+#voteCount {
+    margin-top: 20px;
+    font-weight: bold;
+}
