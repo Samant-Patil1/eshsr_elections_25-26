@@ -3,102 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="favicon.png" type="image/png">
-    <title>Senate Elections - Euroschool HSR</title>
+    <title>Euroschool HSR Senate Elections</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+        }
+        .election-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+        .candidate-card {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .candidate-card:hover {
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .candidate-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 1rem;
+        }
+        #message {
+            margin-top: 1rem;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <img src="favicon.png" alt="Euroschool HSR Logo">
-        <h1>Euroschool HSR Senate Elections</h1>
-    </header>
-    <main>
-        <form id="electionsForm">
-            <h2>Vote for Your Candidates</h2>
-            
-            <div class="division">
-                <h3>Head Boy</h3>
-                <label>
-                    <input type="radio" name="headBoy" value="Contestant1"> Contestant 1
-                </label>
-                <label>
-                    <input type="radio" name="headBoy" value="Contestant2"> Contestant 2
-                </label>
+    <div class="election-container">
+        <section class="hero is-primary is-bold">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">Euroschool HSR Senate Elections</h1>
+                    <p class="subtitle">Secret Ballot Voting System</p>
+                </div>
+            </div>
+        </section>
+
+        <div id="votingForm">
+            <!-- Head Boy Section -->
+            <div class="role-section" data-role="Head Boy">
+                <h2 class="subtitle">Head Boy</h2>
+                <div class="candidates">
+                    <div class="candidate-card">
+                        <img src="candidate1_headboy.jpg" alt="Candidate 1" class="candidate-image">
+                        <div>
+                            <h3>Rohan Sharma</h3>
+                            <p>Sports House</p>
+                            <label class="radio">
+                                <input type="radio" name="Head Boy" value="Rohan Sharma">
+                                Select Candidate
+                            </label>
+                        </div>
+                    </div>
+                    <div class="candidate-card">
+                        <img src="candidate2_headboy.jpg" alt="Candidate 2" class="candidate-image">
+                        <div>
+                            <h3>Arjun Patel</h3>
+                            <p>Academic House</p>
+                            <label class="radio">
+                                <input type="radio" name="Head Boy" value="Arjun Patel">
+                                Select Candidate
+                            </label>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="division">
-                <h3>Deputy Head Boy</h3>
-                <label>
-                    <input type="radio" name="deputyHeadBoy" value="Contestant1"> Contestant 1
-                </label>
-                <label>
-                    <input type="radio" name="deputyHeadBoy" value="Contestant2"> Contestant 2
-                </label>
+            <!-- Head Girl Section -->
+            <div class="role-section" data-role="Head Girl">
+                <h2 class="subtitle">Head Girl</h2>
+                <div class="candidates">
+                    <div class="candidate-card">
+                        <img src="candidate1_headgirl.jpg" alt="Candidate 1" class="candidate-image">
+                        <div>
+                            <h3>Priya Malhotra</h3>
+                            <p>Cultural House</p>
+                            <label class="radio">
+                                <input type="radio" name="Head Girl" value="Priya Malhotra">
+                                Select Candidate
+                            </label>
+                        </div>
+                    </div>
+                    <div class="candidate-card">
+                        <img src="candidate2_headgirl.jpg" alt="Candidate 2" class="candidate-image">
+                        <div>
+                            <h3>Neha Gupta</h3>
+                            <p>Science House</p>
+                            <label class="radio">
+                                <input type="radio" name="Head Girl" value="Neha Gupta">
+                                Select Candidate
+                            </label>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="division">
-                <h3>Head Girl</h3>
-                <label>
-                    <input type="radio" name="headGirl" value="Contestant1"> Contestant 1
-                </label>
-                <label>
-                    <input type="radio" name="headGirl" value="Contestant2"> Contestant 2
-                </label>
-            </div>
+            <!-- Add more role sections as needed -->
+        </div>
 
-            <div class="division">
-                <h3>Deputy Head Girl</h3>
-                <label>
-                    <input type="radio" name="deputyHeadGirl" value="Contestant1"> Contestant 1
-                </label>
-                <label>
-                    <input type="radio" name="deputyHeadGirl" value="Contestant2"> Contestant 2
-                </label>
+        <div class="field is-grouped mt-4">
+            <div class="control">
+                <button id="submitVote" class="button is-primary">Submit Secret Ballot</button>
             </div>
+        </div>
 
-            <div class="division">
-                <h3>Sports Captain</h3>
-                <label>
-                    <input type="radio" name="sportsCaptain" value="Contestant1"> Contestant 1
-                </label>
-                <label>
-                    <input type="radio" name="sportsCaptain" value="Contestant2"> Contestant 2
-                </label>
-            </div>
+        <div id="message" class="is-hidden"></div>
+    </div>
 
-            <div class="division">
-                <h3>Zeus House Captain</h3>
-                <label>
-                    <input type="radio" name="zeusHouseCaptain" value="Contestant1"> Contestant 1
-                </label>
-                <label>
-                    <input type="radio" name="zeusHouseCaptain" value="Contestant2"> Contestant 2
-                </label>
-            </div>
+    <script>
+        let sessionId = null;
 
-            <div class="division">
-                <h3>Deputy Zeus House Captain</h3>
-                <label>
-                    <input type="radio" name="deputyZeusCaptain" value="Contestant1"> Contestant 1
-                </label>
-                <label>
-                    <input type="radio" name="deputyZeusCaptain" value="Contestant2"> Contestant 2
-                </label>
-            </div>
+        // Fetch session ID on page load
+        fetch('https://script.google.com/macros/s/AKfycbyYknYJJ8CqmNbnIevOVLa9bU--jVQsHUi71jgS1RQD8AGrfE3VGGp6ZKDiqOuarXpw/exec')
+            .then(response => response.json())
+            .then(data => {
+                sessionId = data.sessionId;
+                console.log('Session ID received:', sessionId);
+            })
+            .catch(error => {
+                console.error('Error fetching session ID:', error);
+            });
 
-            <div class="division">
-                <h3>Mercury House Captain</h3>
-                <label>
-                    <input type="radio" name="mercuryHouseCaptain" value="Contestant1"> Contestant 1
-                </label>
-                <label>
-                    <input type="radio" name="mercuryHouseCaptain" value="Contestant2"> Contestant 2
-                </label>
-            </div>
+        document.getElementById('submitVote').addEventListener('click', function() {
+            const messageEl = document.getElementById('message');
+            messageEl.textContent = '';
+            messageEl.classList.add('is-hidden');
+            messageEl.classList.remove('is-danger', 'is-success');
 
-            <button type="submit">Submit Vote</button>
-        </form>
-    </main>
-    <script src="script.js"></script>
+            // Collect votes for each role
+            const roles = document.querySelectorAll('.role-section');
+            const votes = [];
+            let hasError = false;
+
+            roles.forEach(roleSection => {
+                const role = roleSection.getAttribute('data-role');
+                const selectedCandidate = roleSection.querySelector(`input[name="${role}"]:checked`);
+
+                if (!selectedCandidate) {
+                    hasError = true;
+                    return;
+                }
+
+                votes.push({
+                    role: role,
+                    candidate: selectedCandidate.value
+                });
+            });
+
+            if (hasError) {
+                messageEl.textContent = 'Please select a candidate for each role.';
+                messageEl.classList.remove('is-hidden');
+                messageEl.classList.add('is-danger');
+                return;
+            }
+
+            // Submit votes
+            Promise.all(votes.map(vote => 
+                fetch('https://script.google.com/macros/s/AKfycbyYknYJJ8CqmNbnIevOVLa9bU--jVQsHUi71jgS1RQD8AGrfE3VGGp6ZKDiqOuarXpw/exec', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        sessionId: sessionId,
+                        role: vote.role,
+                        candidate: vote.candidate
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'error') {
+                        throw new Error(data.message);
+                    }
+                    return data;
+                })
+            ))
+            .then(results => {
+                // Show success message
+                messageEl.textContent = 'Your secret ballot has been submitted successfully!';
+                messageEl.classList.remove('is-hidden');
+                messageEl.classList.add('is-success');
+
+                // Disable voting after submission
+                document.getElementById('submitVote').disabled = true;
+            })
+            .catch(error => {
+                console.error('Vote submission error:', error);
+                messageEl.textContent = 'An error occurred. Please try again.';
+                messageEl.classList.remove('is-hidden');
+                messageEl.classList.add('is-danger');
+            });
+        });
+    </script>
 </body>
 </html>
